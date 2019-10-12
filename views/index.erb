@@ -1,5 +1,10 @@
 <h1>Music Festival</h1>
 
+<% if @record_labels_hash == 'No information'  %>
+
+No information
+
+<% else %>
 <% @record_labels_hash.each {|key, value| %> 
      <div class="record-label"> <span> Record Label:</span> <%= key %> </div>
      
@@ -11,3 +16,5 @@
           <% end %> 
       <% } %> 
   <% } %>
+
+<% end %>

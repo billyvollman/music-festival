@@ -140,17 +140,30 @@ result = [
   }
 ]
 
+# not sure how to handle Too many requests, throttling
+
 get '/' do
   
 
   # url = "http://eacodingtest.digital.energyaustralia.com.au/api/v1/festivals"
   # result = HTTParty.get(url)
 
+  # binding.pry
+
   record_labels = []
   bands = []
   music_festival = []
 
+  if result[0] == nil 
+    @record_labels_hash = 'No information'
+    erb :index
+  else   
+  
   for i in result do 
+      if i['name'] == false
+        puts 'not working'
+      end 
+
       if i['name']
           music_festival << i['name']
       end
@@ -215,6 +228,7 @@ get '/' do
 
 
   erb :index
+end
 end
 
 
