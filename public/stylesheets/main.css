@@ -1,15 +1,73 @@
+h1 {
+    text-align: center;
+}
+
 .record-label {
-    padding: 10px 0 2px;
+    padding: 10px 0 10px;
+    /* background-color: #dff0d8; */
+    background-color: rgba(223, 240, 216, 0.7);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #3c763d;
+    text-align: center
 }
 
 span {
     font-weight: bold;
 }
 
+.band-details {
+    background-color: #eee;
+    padding-top: 10px;
+}
+
+.band-details:last-of-type {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background-color: #eee;
+    padding-bottom: 10px;
+}
+
+/* .band-details:first-of-type {
+    padding-top: 10px;
+} */
+
 .band {
     padding-left: 20px;
+    /* background-color: #eee; */
 }
 
 .music-festival {
     padding-left: 40px;
+    /* background-color: #eee; */
+   
+}
+
+.container {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.container-border {
+    /* border: 1px solid #dff0d8; */
+    margin-bottom: 10px;
+    border-radius: 6px;
+}
+
+@media (max-width: 800px) {
+    .container {
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 300px) {
+    .container {
+        width: 90%;
+    }
 }

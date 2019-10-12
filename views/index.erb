@@ -1,20 +1,35 @@
 <h1>Music Festival</h1>
 
-<% if @record_labels_hash == 'No information'  %>
+<div class="container">
 
-No information
+    <% if @record_labels_hash == 'No information' %>
 
-<% else %>
-<% @record_labels_hash.each {|key, value| %> 
-     <div class="record-label"> <span> Record Label:</span> <%= key %> </div>
-     
-      <% value.each {|key, value| %> 
-        <div class="band"> <span>Band:</span> <%= key %>  </div>
-       
-         <%  value.each do |item| %> 
-           <div class="music-festival">  - <%= item %> </div>
-          <% end %> 
-      <% } %> 
-  <% } %>
+    No information
 
-<% end %>
+    <% elsif @record_labels_hash == 'No information at the moment throttling' %>
+
+    No information at the moment throttling
+
+    <% else %>
+   
+        <% @record_labels_hash.each {|key, value| %> 
+         <div class="container-border" >
+            <div class="record-label"> <span> Record Label:</span> <%= key %> </div>
+            
+            <% value.each {|key, value| %> 
+                <div class="band-details">
+                    <div class="band"> <span>Band:</span> <%= key %>  </div>
+                
+                    <%  value.each do |item| %> 
+                    <div class="music-festival">  - <%= item %> </div>
+                
+                    <% end %> 
+                </div>
+            <% } %> 
+                
+            </div>
+        <% } %>
+        
+    <% end %>
+
+</div>

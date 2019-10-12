@@ -42,113 +42,126 @@ require 'httparty'
   # }
 
 
-result = [
-  {
-      "name"=> "LOL-palooza",
-      "bands"=> [
-          {
-              "name"=> "Frank Jupiter",
-              "recordLabel"=> "Pacific Records"
-          },
-          {
-              "name"=> "Jill Black",
-              "recordLabel"=> "Fourth Woman Records"
-          },
-          {
-              "name"=> "Winter Primates",
-              "recordLabel"=> ""
-          },
-          {
-              "name"=> "Werewolf Weekday",
-              "recordLabel"=> "XS Recordings"
-          }
-      ]
-  },
-  {
-      "name"=> "Small Night In",
-      "bands"=> [
-          {
-              "name"=> "The Black Dashes",
-              "recordLabel"=> "Fourth Woman Records"
-          },
-          {
-              "name"=> "Yanke East",
-              "recordLabel"=> "MEDIOCRE Music"
-          },
-          {
-              "name"=> "Squint-281",
-              "recordLabel"=> "Outerscope"
-          },
-          {
-              "name"=> "Green Mild Cold Capsicum",
-              "recordLabel"=> "Marner Sis. Recording"
-          },
-          {
-              "name"=> "Wild Antelope",
-              "recordLabel"=> "Marner Sis. Recording"
-          }
-      ]
-  },
-  {
-      "name"=> "Trainerella",
-      "bands"=> [
-          {
-              "name"=> "Manish Ditch",
-              "recordLabel"=> "ACR"
-          },
-          {
-              "name"=> "YOUKRANE",
-              "recordLabel"=> "Anti Records"
-          },
-          {
-              "name"=> "Adrian Venti",
-              "recordLabel"=> "Monocracy Records"
-          },
-          {
-              "name"=> "Wild Antelope",
-              "recordLabel"=> "Still Bottom Records"
-          }
-      ]
-  },
-  {
-      "name"=> "Twisted Tour",
-      "bands"=> [
-          {
-              "name"=> "Summon",
-              "recordLabel"=> "Outerscope"
-          },
-          {
-              "name"=> "Squint-281"
-          },
-          {
-              "name"=> "Auditones",
-              "recordLabel"=> "Marner Sis. Recording"
-          }
-      ]
-  },
-  {
-      "bands"=> [
-          {
-              "name"=> "Propeller",
-              "recordLabel"=> "Pacific Records"
-          },
-          {
-              "name"=> "Critter Girls",
-              "recordLabel"=> "ACR"
-          }
-      ]
-  }
-]
+# result = [
+#   {
+#       "name"=> "LOL-palooza",
+#       "bands"=> [
+#           {
+#               "name"=> "Frank Jupiter",
+#               "recordLabel"=> "Pacific Records"
+#           },
+#           {
+#               "name"=> "Jill Black",
+#               "recordLabel"=> "Fourth Woman Records"
+#           },
+#           {
+#               "name"=> "Winter Primates",
+#               "recordLabel"=> ""
+#           },
+#           {
+#               "name"=> "Werewolf Weekday",
+#               "recordLabel"=> "XS Recordings"
+#           }
+#       ]
+#   },
+#   {
+#       "name"=> "Small Night In",
+#       "bands"=> [
+#           {
+#               "name"=> "The Black Dashes",
+#               "recordLabel"=> "Fourth Woman Records"
+#           },
+#           {
+#               "name"=> "Yanke East",
+#               "recordLabel"=> "MEDIOCRE Music"
+#           },
+#           {
+#               "name"=> "Squint-281",
+#               "recordLabel"=> "Outerscope"
+#           },
+#           {
+#               "name"=> "Green Mild Cold Capsicum",
+#               "recordLabel"=> "Marner Sis. Recording"
+#           },
+#           {
+#               "name"=> "Wild Antelope",
+#               "recordLabel"=> "Marner Sis. Recording"
+#           }
+#       ]
+#   },
+#   {
+#       "name"=> "Trainerella",
+#       "bands"=> [
+#           {
+#               "name"=> "Manish Ditch",
+#               "recordLabel"=> "ACR"
+#           },
+#           {
+#               "name"=> "YOUKRANE",
+#               "recordLabel"=> "Anti Records"
+#           },
+#           {
+#               "name"=> "Adrian Venti",
+#               "recordLabel"=> "Monocracy Records"
+#           },
+#           {
+#               "name"=> "Wild Antelope",
+#               "recordLabel"=> "Still Bottom Records"
+#           }
+#       ]
+#   },
+#   {
+#       "name"=> "Twisted Tour",
+#       "bands"=> [
+#           {
+#               "name"=> "Summon",
+#               "recordLabel"=> "Outerscope"
+#           },
+#           {
+#               "name"=> "Squint-281"
+#           },
+#           {
+#               "name"=> "Auditones",
+#               "recordLabel"=> "Marner Sis. Recording"
+#           }
+#       ]
+#   },
+#   {
+#       "bands"=> [
+#           {
+#               "name"=> "Propeller",
+#               "recordLabel"=> "Pacific Records"
+#           },
+#           {
+#               "name"=> "Critter Girls",
+#               "recordLabel"=> "ACR"
+#           }
+#       ]
+#   }
+# ]
 
 # not sure how to handle Too many requests, throttling
 
 get '/' do
   
 
-  # url = "http://eacodingtest.digital.energyaustralia.com.au/api/v1/festivals"
-  # result = HTTParty.get(url)
+  url = "http://eacodingtest.digital.energyaustralia.com.au/api/v1/festivals"
+  result = HTTParty.get(url)
 
   # binding.pry
+
+  case result.code
+  when 200
+    puts "All good!"
+  when 429
+    puts "Throttled"
+    @record_labels_hash = 'No information at the moment throttling'
+    erb :index
+  when 400...600
+    puts "ZOMG ERROR #{result.code}"
+    @record_labels_hash = 'No information at the moment throttling'
+    erb :index
+  end
 
   record_labels = []
   bands = []
@@ -168,12 +181,20 @@ get '/' do
           music_festival << i['name']
       end
 
-      i['bands'].each do |band| 
-          bands << band['name']
-          if band['recordLabel'] != '' && band['recordLabel'] != nil
-              record_labels << band['recordLabel'] 
-          end
+      if i['bands']
+        i['bands'].each do |band| 
+            bands << band['name']
+            if band['recordLabel'] != '' && band['recordLabel'] != nil
+                record_labels << band['recordLabel'] 
+            end
+        end
       end
+
+      if i['bands'] == false
+        @record_labels_hash = 'No information'
+        erb :index
+      end
+
   end
 
   record_labels_sorted_array = record_labels.uniq.sort
