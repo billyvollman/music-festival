@@ -1,5 +1,6 @@
 h1 {
     text-align: center;
+    font-size: 3rem;
 }
 
 .record-label {
@@ -10,6 +11,7 @@ h1 {
     border-top-right-radius: 6px;
     color: #3c763d;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 span {
@@ -19,6 +21,7 @@ span {
 .band-details {
     background-color: #eee;
     padding-top: 10px;
+    font-size: 1.2rem;
 }
 
 .band-details:last-of-type {
@@ -64,10 +67,34 @@ span {
     .container {
         width: 80%;
     }
+
+    .record-label {
+        
+        font-size: 1.3rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 440px) {
+    .record-label {
+        font-size: 1rem;
+    }
+
+    .band-details {
+        font-size: 1rem;
+    }
+
+
 }
 
 @media (max-width: 300px) {
     .container {
         width: 90%;
     }
+
+    
+
 }
