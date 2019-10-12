@@ -140,7 +140,7 @@ require 'httparty'
 #   }
 # ]
 
-# not sure how to handle Too many requests, throttling
+# not sure how to handle Too many requests, throttling.  It's not crashing the page but it is also not letting me display no information section.  I'm a little stumped at the moment
 
 get '/' do
   
@@ -148,14 +148,15 @@ get '/' do
   url = "http://eacodingtest.digital.energyaustralia.com.au/api/v1/festivals"
   result = HTTParty.get(url)
 
-  # binding.pry
-
   case result.code
   when 200
     puts "All good!"
   when 429
     puts "Throttled"
+    # hoping to redirect to index with no information message when throttling is on but not working
     @record_labels_hash = 'No information at the moment throttling'
+    # binding.pry
+    @result = "Too many requests, throttling"
     erb :index
   when 400...600
     puts "ZOMG ERROR #{result.code}"
@@ -163,16 +164,31 @@ get '/' do
     erb :index
   end
 
+  
+
   record_labels = []
   bands = []
   music_festival = []
 
   if result[0] == nil 
+    # binding.pry
     @record_labels_hash = 'No information'
     erb :index
   else   
+
+  if result[0] == "T"
+    # binding.pry
+    # hoping to redirect to index with no information message when throttling is on but not working here either.
+    # I setup a series of binding.pry to see where things were flowing when 429 result.code happened
+    # it would not go where I wanted it to
+    @record_labels_hash = 'No information'
+    erb :index
+  end
   
+    # binding.pry
+
   for i in result do 
+    
       if i['name'] == false
         puts 'not working'
       end 

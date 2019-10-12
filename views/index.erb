@@ -2,13 +2,10 @@
 
 <div class="container">
 
-    <% if @record_labels_hash == 'No information' %>
+    <% if @record_labels_hash == 'No information' || @record_labels_hash == 'No information at the moment throttling' %>
 
     No information
 
-    <% elsif @record_labels_hash == 'No information at the moment throttling' %>
-
-    No information at the moment throttling
 
     <% else %>
    
