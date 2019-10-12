@@ -1,0 +1,13 @@
+<h1>Music Festival</h1>
+
+<% @record_labels_hash.each {|key, value| %> 
+     <div class="record-label"> <span> Record Label:</span> <%= key %> </div>
+     
+      <% value.each {|key, value| %> 
+        <div class="band"> <span>Band:</span> <%= key %>  </div>
+       
+         <%  value.each do |item| %> 
+           <div class="music-festival">  - <%= item %> </div>
+          <% end %> 
+      <% } %> 
+  <% } %>
