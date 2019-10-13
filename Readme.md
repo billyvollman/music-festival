@@ -1,5 +1,5 @@
 ## About this web app
----
+
 Purpose of web app is to list out music festival data in a particular manner: at the top level, it should show the band record label, below that it should list out all bands under their management, and below that it should display which festivals they've attended, if any. All entries should be sorted alphabetically.
 
 **For example:**
