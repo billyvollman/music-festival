@@ -20,7 +20,7 @@ The data is provided to me via an API.
 ---
 I needed to figure out which technology and language to use to make an API call.  I decided to use Ruby using Sinatra and httparty.  After I made that decision I went about creating my folder for repo and the necessary files.  I also required necessary gems.
 
-I made my first API call to ensure everything was setup correctly.  Once it was I moved onto analysing the existing data structure in the API.  After analysing the data structure I then decided to focus on being able to access the information I needed .  When I was satisfied I could access the data correctly, I then focused on what structure I wanted to put this data into so I could finally loop through the data to then present it on a webpage.  Below are examples of the data structure I wanted to create and the code I planned to use to loop through the final data structure.
+I made my first API call to ensure everything was setup correctly.  Once it was I moved onto analysing the existing data structure in the API.  After analysing the data structure I then decided to focus on being able to access the information I needed.  When I was satisfied I could access the data correctly, I then focused on what structure I wanted to put this data into so I could finally loop through the data to then present it on a webpage.  Below are examples of the data structure I wanted to create and the code I planned to use to loop through the final data structure.
 
 Once I had my data structure sorted and was able to loop through everything via the console, I then went about displaying it on a web page and gave the data a little bit of CSS love.  
 
