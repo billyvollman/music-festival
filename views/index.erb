@@ -4,11 +4,15 @@
 
     <% if @result == "No information" %>
         <div class="error-message">
-            <div class="error-header">Houston we have a problem!  It's not you it's us.</div>
+            <div class="error-header">
+                <div>Houston we have a problem!</div>
+                <div>It's not you it's us.</div>
+            </div>
             <div class="error-body">
                 <div>Currently there is no information to display.</div>
                 <div>Please refresh the page to try again.</div>
                 <div>Note this message appears when API responds with an empty array.</div>
+                <img src="https://media.giphy.com/media/4Hx5nJBfi8FzFWxztb/giphy.gif" alt="Error houston we have a problem">
             </div>
         </div>
         <%# binding.pry %>
@@ -19,6 +23,7 @@
                 <div>This page is currenly being throttled.</div>
                 <div>Please give it a moment and then refresh your page to try again.</div>
                 <div>Note this message appears when API responds with a 429 code. </div>
+                <img src="https://media.giphy.com/media/Ip2FdqJdCHexy/200.gif" alt="Error too many request">
             </div>
         </div>
         <%# binding.pry %>        

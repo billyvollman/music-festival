@@ -81,6 +81,8 @@ span {
     background-color: #eee;
     padding: 10px 20px;
     font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .error-body:last-of-type {
@@ -89,6 +91,11 @@ span {
     background-color: #eee;
     padding-bottom: 10px;
     margin-bottom: 30px;
+}
+
+.error-body img {
+    width: 50%;
+    padding-left: 25%;
 }
 
 @media (max-width: 800px) {
