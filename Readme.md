@@ -1,5 +1,5 @@
 ## Link to web app
-[Music Festival](https://music-festival.herokuapp.com)
+Click link here: [Music Festival](https://music-festival.herokuapp.com)
 
 ## About this web app
 
