@@ -1,5 +1,7 @@
-
 require 'pry'
+
+# used this section to test out how to create the data structure I wanted.
+# Also used this section to figure out how to loop through the final data structure and display it on terminal
 
 result = [
     {
@@ -99,9 +101,10 @@ result = [
     }
 ]
 
-# how you get the first one
+# how you get the first recordLabel
 # result[0][:bands][0][:recordLabel]
 
+#working out how to loop through the original data
 # for i in result do 
 #     puts i 
 # end
@@ -115,6 +118,7 @@ result = [
 #         puts band[:recordLabel] 
 #     end 
 # end
+
 
 record_labels = []
 bands = []
@@ -132,40 +136,6 @@ for i in result do
         end
     end
 end
-
-
-# for i in result do 
-#     if i['name']
-#         music_festival << i['name']
-#     end
-# end
-
-# for i in result do 
-#     i['bands'].each do |band| 
-#         bands << band['name']
-#     end
-# end
-
-# for i in result do 
-  
-#     i['bands'].each do |band| 
-#       if band['recordLabel'] != '' && band['recordLabel'] != nil
-#             record_labels << band['recordLabel'] 
-#       end
-#     end
-  
-# end
-
-# for i in result do 
-#     i[:bands].each do |band| 
-#         if band[:recordLabel] == '' 
-#             band[:recordLabel] = 'Does not have record label'
-#             record_labels << band[:recordLabel] 
-#         else 
-#             record_labels << band[:recordLabel] 
-#         end 
-#     end
-# end
 
 record_labels_sorted_array = record_labels.uniq.sort
 unique_bands = bands.uniq.sort
@@ -201,9 +171,7 @@ record_labels_sorted_array.each do |record_label|
 
 end
 
-billy_test = {
 
-}
 record_labels_hash.each do | key, value |
     record_labels_hash[key] = record_labels_hash[key].sort.to_h
 end
