@@ -15,7 +15,7 @@
                 <img src="https://media.giphy.com/media/4Hx5nJBfi8FzFWxztb/giphy.gif" alt="Error houston we have a problem">
             </div>
         </div>
-        <%# binding.pry %>
+        
     <% elsif @result == 'Too many requests, throttling' %>
         <div class="error-message">
             <div class="error-header">Whoa there cowboy, that is way too many requests!</div>
@@ -26,7 +26,7 @@
                 <img src="https://media.giphy.com/media/Ip2FdqJdCHexy/200.gif" alt="Error too many request">
             </div>
         </div>
-        <%# binding.pry %>        
+             
     <% else %>
         <% @record_labels_hash.each {|key, value| %> 
         <div class="container-border" >

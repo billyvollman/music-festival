@@ -9,7 +9,6 @@ h1 {
 
 .record-label {
     padding: 10px 0 10px;
-    /* background-color: #dff0d8; */
     background-color: rgba(223, 240, 216, 0.7);
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -36,19 +35,12 @@ span {
     margin-bottom: 30px;
 }
 
-/* .band-details:first-of-type {
-    padding-top: 10px;
-} */
-
 .band {
     padding-left: 20px;
-    /* background-color: #eee; */
 }
 
 .music-festival {
     padding-left: 40px;
-    /* background-color: #eee; */
-   
 }
 
 .container {
@@ -57,7 +49,6 @@ span {
 }
 
 .container-border {
-    /* border: 1px solid #dff0d8; */
     margin-bottom: 10px;
     border-radius: 6px;
 }
@@ -68,7 +59,6 @@ span {
 
 .error-header {
     padding: 10px 0 10px;
-    /* background-color: #dff0d8; */
     background-color: rgba(223, 240, 216, 0.7);
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -110,12 +100,10 @@ span {
     }
 
     .record-label {
-        
         font-size: 1.3rem;
     }
 
     .error-header {
-        
         font-size: 1.3rem;
     }
 
@@ -140,14 +128,10 @@ span {
     .error-body {
         font-size: 1rem;
     }
-
 }
 
 @media (max-width: 300px) {
     .container {
         width: 90%;
     }
-
-    
-
 }
