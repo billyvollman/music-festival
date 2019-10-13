@@ -4,18 +4,22 @@
 
     <% if @result == "No information" %>
         <div class="error-message">
-            <div>Houston we have a problem!  It's not you it's us.</div>
-            <div>Currently there is no information to display.</div>
-            <div>Please refresh the page to try again.</div>
-            <div>Note this message appears when API responds with an empty array</div>
+            <div class="error-header">Houston we have a problem!  It's not you it's us.</div>
+            <div class="error-body">
+                <div>Currently there is no information to display.</div>
+                <div>Please refresh the page to try again.</div>
+                <div>Note this message appears when API responds with an empty array.</div>
+            </div>
         </div>
         <%# binding.pry %>
     <% elsif @result == 'Too many requests, throttling' %>
         <div class="error-message">
-            <div>Whoa there cowboy, that is way too many requests!</div>
-            <div>This page is currenly being throttled.</div>
-            <div>Please give it a moment and then refresh your page to try again.</div>
-            <div>Note this message appears when API responds with a 429 code </div>
+            <div class="error-header">Whoa there cowboy, that is way too many requests!</div>
+            <div class="error-body">
+                <div>This page is currenly being throttled.</div>
+                <div>Please give it a moment and then refresh your page to try again.</div>
+                <div>Note this message appears when API responds with a 429 code. </div>
+            </div>
         </div>
         <%# binding.pry %>        
     <% else %>
