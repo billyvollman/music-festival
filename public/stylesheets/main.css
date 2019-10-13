@@ -58,6 +58,10 @@ span {
     border-radius: 6px;
 }
 
+.error-message div {
+    padding-bottom: 10px;
+}
+
 @media (max-width: 800px) {
     .container {
         width: 50%;

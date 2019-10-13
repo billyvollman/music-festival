@@ -1,16 +1,26 @@
-<h1>Music Festival</h1>
+<h1>Music Festival Data</h1>
 
 <div class="container">
 
-    <% if @record_labels_hash == 'No information' || @record_labels_hash == 'No information at the moment throttling' %>
-
-    No information
-
-
+    <% if @result == "No information" %>
+        <div class="error-message">
+            <div>Houston we have a problem!  It's not you it's us.</div>
+            <div>Currently there is no information to display.</div>
+            <div>Please refresh the page to try again.</div>
+            <div>Note this message appears when API responds with an empty array</div>
+        </div>
+        <%# binding.pry %>
+    <% elsif @result == 'Too many requests, throttling' %>
+        <div class="error-message">
+            <div>Whoa there cowboy, that is way too many requests!</div>
+            <div>This page is currenly being throttled.</div>
+            <div>Please give it a moment and then refresh your page to try again.</div>
+            <div>Note this message appears when API responds with a 429 code </div>
+        </div>
+        <%# binding.pry %>        
     <% else %>
-   
         <% @record_labels_hash.each {|key, value| %> 
-         <div class="container-border" >
+        <div class="container-border" >
             <div class="record-label"> <span> Record Label:</span> <%= key %> </div>
             
             <% value.each {|key, value| %> 
@@ -24,7 +34,7 @@
                 </div>
             <% } %> 
                 
-            </div>
+        </div>
         <% } %>
         
     <% end %>
