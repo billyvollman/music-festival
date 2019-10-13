@@ -78,5 +78,5 @@ Through that process I ran into some error handling issues.
 
 I had to rethink my logic to sort out when the page returned a 429 code for "Too Many Requests" or when there was certain data missing from the original dataset.  The 429 code is still a challenge at the moment as are the instances where no data is available from the API.  These issues are no longer crashing my site but I would like to present better error messaging and information on the page to inform users of what is going on.  This is an area I have not had much experience in so am looking into learning more about this.
 
-**Update**
+**Update**:
 Have worked out how to better handle errors caused the API responding with an empty array or with a 429 code.  Individual messages are now being displayed.
