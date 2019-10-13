@@ -269,7 +269,6 @@ record_labels_sorted_array.each do |record_label|
     puts ""
 end
 
-binding.pry
 
 
 
