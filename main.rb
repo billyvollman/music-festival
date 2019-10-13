@@ -26,29 +26,29 @@ get '/' do
   bands = []
   music_festival = []
 
-  for i in result do 
+  for i in result do
 
-      if i['name'] == false
-        puts 'not working'
-      end 
+    if i['name'] == false
+      puts 'not working'
+    end 
 
-      if i['name']
-          music_festival << i['name']
-      end
+    if i['name']
+        music_festival << i['name']
+    end
 
-      if i['bands']
-        i['bands'].each do |band| 
-          bands << band['name']
-          if band['recordLabel'] != '' && band['recordLabel'] != nil
-            record_labels << band['recordLabel'] 
-          end
+    if i['bands']
+      i['bands'].each do |band| 
+        bands << band['name']
+        if band['recordLabel'] != '' && band['recordLabel'] != nil
+          record_labels << band['recordLabel'] 
         end
       end
+    end
 
-      if i['bands'] == false
-        @record_labels_hash = 'No information'
-        erb :index
-      end
+    if i['bands'] == false
+      @record_labels_hash = 'No information'
+      erb :index
+    end
 
   end
 
@@ -71,20 +71,20 @@ get '/' do
     end
 
 
-      unique_bands.each do |unique_band|
-        for i in result do
-          i['bands'].each do |band| 
-            if band['name'] == unique_band && @record_labels_hash[record_label][band['name']] != nil
-              if i['name'] != nil 
-                @record_labels_hash[record_label][band['name']] << i['name']
-                # trying to sort the array of music festivals each band has been to, alphabetically
-                # does not seem like I needed it based on data
-                # @record_labels_hash[record_label][band['name']].sort!
-              end   
-            end
+    unique_bands.each do |unique_band|
+      for i in result do
+        i['bands'].each do |band| 
+          if band['name'] == unique_band && @record_labels_hash[record_label][band['name']] != nil
+            if i['name'] != nil 
+              @record_labels_hash[record_label][band['name']] << i['name']
+              # trying to sort the array of music festivals each band has been to, alphabetically
+              # does not seem like I needed it based on data
+              # @record_labels_hash[record_label][band['name']].sort!
+            end   
           end
         end
       end
+    end
   end
 
 
